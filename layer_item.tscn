@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://do7hi4wu27q7p"]
+
+[ext_resource type="Script" path="res://layer_item.gd" id="1_mcx20"]
+[ext_resource type="Texture2D" uid="uid://dm6ghhkhk3hxu" path="res://tex/ui/visibility-shown.svg" id="2_3iyxc"]
+[ext_resource type="Texture2D" uid="uid://bbyt2fp78sa17" path="res://tex/ui/visibility-hidden.svg" id="3_4tuv5"]
+[ext_resource type="Texture2D" uid="uid://w1vhwnd8agjs" path="res://tex/ui/warning.svg" id="4_nqbyd"]
+
+[node name="LayerItem" type="ColorRect"]
+custom_minimum_size = Vector2(340, 35)
+offset_right = 340.0
+offset_bottom = 35.0
+size_flags_horizontal = 3
+color = Color(1, 1, 1, 0.0627451)
+script = ExtResource("1_mcx20")
+
+[node name="ItemContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(16, 35)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.982
+anchor_bottom = 1.0
+offset_right = 0.119982
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="ItemContainer"]
+layout_mode = 2
+
+[node name="Visible" type="TextureButton" parent="ItemContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_3iyxc")
+texture_disabled = ExtResource("3_4tuv5")
+
+[node name="Name" type="Label" parent="ItemContainer"]
+custom_minimum_size = Vector2(180, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LayerName"
+
+[node name="Warning" type="TextureRect" parent="ItemContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Shhhhhhhhhhhh"
+texture = ExtResource("4_nqbyd")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="ItemContainer/Visible" to="." method="_on_visible_pressed"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://hun6i2uj5ha2"]
+
+[ext_resource type="Texture2D" uid="uid://cecji8rip3xj0" path="res://tex/ui/pin-out.svg" id="1_0nsvw"]
+[ext_resource type="Script" path="res://PinBtn.gd" id="2_rh6jo"]
+
+[node name="RightSideUI" type="VBoxContainer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PinBtn" type="TextureButton" parent="."]
+layout_mode = 2
+tooltip_text = "Toggles between the window being always on top
+and not. Mainly used for testing, but might as well."
+toggle_mode = true
+texture_normal = ExtResource("1_0nsvw")
+script = ExtResource("2_rh6jo")
+
+[connection signal="toggled" from="PinBtn" to="PinBtn" method="_on_toggled"]

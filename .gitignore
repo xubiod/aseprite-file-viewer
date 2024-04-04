@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+
+# External editors
+.vscode/
+
+# Test files
+*.ase
+*.aseprite
+
+# macOS related
+.DS_Store

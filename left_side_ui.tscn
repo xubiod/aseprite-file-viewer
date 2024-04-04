@@ -1,0 +1,129 @@
+[gd_scene load_steps=9 format=3 uid="uid://vx8sxutdohm8"]
+
+[ext_resource type="Script" path="res://LeftSideUI.gd" id="1_rd8ut"]
+[ext_resource type="Texture2D" uid="uid://11wodm8igj3w" path="res://tex/ui/import.svg" id="2_duekr"]
+[ext_resource type="Script" path="res://ZoomText.gd" id="3_5dxxd"]
+[ext_resource type="Script" path="res://FrameText.gd" id="4_ldcim"]
+[ext_resource type="Texture2D" uid="uid://8yruafyhere3" path="res://tex/ui/view-2d.svg" id="5_482k6"]
+[ext_resource type="Script" path="res://ViewStyle.gd" id="6_hcrui"]
+[ext_resource type="Script" path="res://ViewStyleText.gd" id="7_0ixe3"]
+[ext_resource type="Script" path="res://SpreadDistance.gd" id="8_1sh7m"]
+
+[node name="LeftSideUI" type="VBoxContainer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 320.0
+offset_bottom = -4.0
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_rd8ut")
+
+[node name="TopButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ImportBtn" type="Button" parent="TopButtons"]
+custom_minimum_size = Vector2(96, 2.08165e-12)
+layout_mode = 2
+text = "Import"
+icon = ExtResource("2_duekr")
+
+[node name="LayerScroller" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LayerView" type="VBoxContainer" parent="LayerScroller"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="LayerItem" parent="LayerScroller/LayerView" instance_placeholder="res://layer_item.tscn"]
+layout_mode = 2
+
+[node name="Zoom" type="HBoxContainer" parent="."]
+layout_mode = 2
+tooltip_text = "General zoom level."
+
+[node name="ZoomSlider" type="HSlider" parent="Zoom"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.1
+max_value = 3.0
+step = 0.05
+value = 1.0
+tick_count = 11
+ticks_on_borders = true
+
+[node name="ZoomText" type="Label" parent="Zoom"]
+custom_minimum_size = Vector2(36, 2.08165e-12)
+layout_mode = 2
+text = "1.00"
+script = ExtResource("3_5dxxd")
+
+[node name="ViewStyle" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ViewStyleBtn" type="Button" parent="ViewStyle"]
+layout_mode = 2
+tooltip_text = "Toggles the view style from normal 2D to spread out 3D.
+
+Pressing and holding SHIFT will swap it to the opposite."
+icon = ExtResource("5_482k6")
+script = ExtResource("6_hcrui")
+
+[node name="ViewStyleText" type="Label" parent="ViewStyle"]
+custom_minimum_size = Vector2(116, 2.08165e-12)
+layout_mode = 2
+text = "Normal"
+script = ExtResource("7_0ixe3")
+
+[node name="SpreadDistance" type="HSlider" parent="ViewStyle"]
+custom_minimum_size = Vector2(140, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "The amount of distance between two layers when spread out."
+min_value = 0.01
+max_value = 80.0
+value = 20.01
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("8_1sh7m")
+
+[node name="Padding" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Frame" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+tooltip_text = "What frame to view?"
+
+[node name="FrameSlider" type="HSlider" parent="Frame"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+rounded = true
+ticks_on_borders = true
+
+[node name="FrameText" type="Label" parent="Frame"]
+custom_minimum_size = Vector2(36, 2.08165e-12)
+layout_mode = 2
+text = "0"
+script = ExtResource("4_ldcim")
+
+[connection signal="external_frame_update" from="." to="." method="_on_external_frame_update"]
+[connection signal="pressed" from="TopButtons/ImportBtn" to="." method="_on_import_btn_pressed"]
+[connection signal="value_changed" from="Zoom/ZoomSlider" to="." method="_on_zoom_slider_value_changed"]
+[connection signal="value_changed" from="Zoom/ZoomSlider" to="Zoom/ZoomText" method="_on_zoom_slider_value_changed"]
+[connection signal="pressed" from="ViewStyle/ViewStyleBtn" to="ViewStyle/ViewStyleBtn" method="_on_pressed"]
+[connection signal="value_changed" from="ViewStyle/SpreadDistance" to="ViewStyle/SpreadDistance" method="_on_value_changed"]
+[connection signal="value_changed" from="Frame/FrameSlider" to="." method="_on_frame_slider_value_changed"]
+[connection signal="value_changed" from="Frame/FrameSlider" to="Frame/FrameText" method="_on_frame_slider_value_changed"]

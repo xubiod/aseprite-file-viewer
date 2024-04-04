@@ -1,0 +1,99 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Aseprite File Viewer"
+config/description="A viewer for Aseprite files, showing the layers in a 2D view or an orthogonal 3D view, frames, and tags playable as animations.
+
+Made with Godot Engine 4.1.3.stable with no modifications, and 100% completely with GDScript."
+run/main_scene="res://3d_view.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://tex/aseprite-viewer.svg"
+
+[autoload]
+
+Importer="*res://importer.gd"
+
+[debug]
+
+gdscript/warnings/deprecated_keyword=2
+
+[debug_draw_3d]
+
+settings/telemetry_state=1
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=576
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+window/stretch/aspect="ignore"
+window/dpi/allow_hidpi=false
+
+[input]
+
+move_north={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"echo":false,"script":null)
+]
+}
+move_south={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"echo":false,"script":null)
+]
+}
+move_east={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"echo":false,"script":null)
+]
+}
+move_west={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"echo":false,"script":null)
+]
+}
+separate={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+reset_position={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_render/layer_1="Main"
+3d_render/layer_2="Uhm"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+shading/overrides/force_vertex_shading=true
+shading/overrides/force_lambert_over_burley=true
+driver/depth_prepass/enable=false
+camera/depth_of_field/depth_of_field_bokeh_shape=0
+environment/ssao/quality=0
+environment/ssil/quality=0
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+textures/decals/filter=0
+textures/light_projectors/filter=0
+environment/glow/upscale_mode=0
+
+[shader_globals]
+
+camera_position={
+"type": "vec2",
+"value": Vector2(0, 0)
+}

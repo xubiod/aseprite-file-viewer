@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://p2lfyjdnp7qi"]
+
+[ext_resource type="Script" path="res://MainCamera.gd" id="1_6yxtq"]
+[ext_resource type="Script" path="res://main.gd" id="1_vq1ah"]
+[ext_resource type="Script" path="res://ImagesHolder.gd" id="2_1b8bt"]
+[ext_resource type="Script" path="res://ImportDialog.gd" id="2_3dwcv"]
+[ext_resource type="Script" path="res://WrongImport.gd" id="3_s31my"]
+[ext_resource type="Material" uid="uid://d0ajbbcnnnq66" path="res://materials/bkgd_material.tres" id="3_xp15i"]
+[ext_resource type="Script" path="res://Background.gd" id="4_i6eoe"]
+[ext_resource type="PackedScene" uid="uid://vx8sxutdohm8" path="res://left_side_ui.tscn" id="7_qrcrx"]
+[ext_resource type="PackedScene" uid="uid://bjpq1pcl8pcyc" path="res://bottom_side_ui.tscn" id="8_ikrnd"]
+[ext_resource type="PackedScene" uid="uid://hun6i2uj5ha2" path="res://right_side_ui.tscn" id="10_g00hx"]
+
+[sub_resource type="Environment" id="Environment_p0lxc"]
+background_mode = 1
+background_color = Color(0, 0, 0.0823529, 1)
+glow_intensity = 8.0
+glow_strength = 1.2
+glow_blend_mode = 0
+adjustment_brightness = 0.8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5wq8"]
+width = 3
+height = 2
+generate_mipmaps = false
+normalize = false
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_vq1ah")
+
+[node name="FunStuff" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p0lxc")
+
+[node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.97574e-16, -3.04919e-23, 0, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+projection = 1
+current = true
+size = 64.0
+near = 0.001
+script = ExtResource("1_6yxtq")
+
+[node name="ImagesHolder" type="Node3D" parent="MainCamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -64, -3072)
+script = ExtResource("2_1b8bt")
+
+[node name="Background" type="Sprite3D" parent="MainCamera"]
+transform = Transform3D(128, 0, 0, 0, 128, 0, 0, 0, 128, 2.08165e-12, 2.08165e-12, -3999)
+material_override = ExtResource("3_xp15i")
+cast_shadow = 0
+pixel_size = 1.0
+texture = SubResource("NoiseTexture2D_u5wq8")
+script = ExtResource("4_i6eoe")
+
+[node name="Windows" type="Node" parent="."]
+
+[node name="ImportDialog" type="FileDialog" parent="Windows"]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(800, 480)
+always_on_top = true
+min_size = Vector2i(200, 140)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.ase , *.aseprite ; Aseprite files")
+script = ExtResource("2_3dwcv")
+
+[node name="WrongImport" type="Popup" parent="Windows"]
+title = "Invalid Path"
+initial_position = 2
+size = Vector2i(448, 128)
+borderless = false
+always_on_top = true
+script = ExtResource("3_s31my")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Windows/WrongImport"]
+custom_minimum_size = Vector2(448, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="WrongImportText" type="Label" parent="Windows/WrongImport/VBoxContainer"]
+custom_minimum_size = Vector2(256, 2.08165e-12)
+layout_mode = 2
+text = "The given file(s) did not have a valid extention.
+
+Supported: \".ase\", \".aseprite\""
+horizontal_alignment = 1
+
+[node name="WrongImportClose" type="Button" parent="Windows/WrongImport/VBoxContainer"]
+custom_minimum_size = Vector2(96, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "OK
+"
+
+[node name="BottomSideUI" parent="." instance=ExtResource("8_ikrnd")]
+unique_name_in_owner = true
+
+[node name="LeftSideUI" parent="." instance=ExtResource("7_qrcrx")]
+unique_name_in_owner = true
+
+[node name="RightSideUI" parent="." instance=ExtResource("10_g00hx")]
+unique_name_in_owner = true
+
+[connection signal="file_selected" from="Windows/ImportDialog" to="Windows/ImportDialog" method="_on_file_selected"]
+[connection signal="pressed" from="Windows/WrongImport/VBoxContainer/WrongImportClose" to="Windows/WrongImport" method="_on_wrong_import_close_pressed"]
+[connection signal="frame_changed" from="BottomSideUI" to="MainCamera/ImagesHolder" method="_on_bottom_side_ui_frame_changed"]
+[connection signal="frame_changed" from="LeftSideUI" to="MainCamera/ImagesHolder" method="_on_left_side_ui_frame_changed"]
+[connection signal="import_button_pressed" from="LeftSideUI" to="Windows/ImportDialog" method="_on_left_side_ui_import_button_pressed"]
+[connection signal="zoom_changed" from="LeftSideUI" to="MainCamera" method="_on_left_side_ui_zoom_changed"]
+[connection signal="zoom_changed" from="LeftSideUI" to="MainCamera/Background" method="_on_left_side_ui_zoom_changed"]

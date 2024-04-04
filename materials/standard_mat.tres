@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://i2puvnprtm23"]
+
+[ext_resource type="Texture2D" uid="uid://ca408v00w8i6m" path="res://tex/aseprite-viewer.svg" id="1_481ik"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7mvp"]
+
+[resource]
+next_pass = SubResource("ShaderMaterial_s7mvp")
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_481ik")
+texture_filter = 0

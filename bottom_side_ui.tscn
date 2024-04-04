@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjpq1pcl8pcyc"]
+
+[ext_resource type="Script" path="res://bottom_side_ui.gd" id="1_yohu5"]
+[ext_resource type="Texture2D" uid="uid://0p3euh6hfcok" path="res://tex/ui/direction-forward.svg" id="2_4udef"]
+[ext_resource type="Texture2D" uid="uid://bobvru65jeaed" path="res://tex/ui/animation-play-reverse.svg" id="3_ixokn"]
+[ext_resource type="Texture2D" uid="uid://dh31o33f3mgu6" path="res://tex/ui/animation-play.svg" id="4_ytils"]
+
+[node name="BottomSideUI" type="VBoxContainer"]
+custom_minimum_size = Vector2(960, 2.08165e-12)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 10
+alignment = 2
+script = ExtResource("1_yohu5")
+
+[node name="TagItems" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="TagPicker" type="OptionButton" parent="TagItems"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Select the tag to demonstrate.
+
+If the currently playing frame is out of range of the tag
+bounds, it loops normally. Once in bounds, it loops in
+the tag's range, or ping-pongs depending on the loop
+direction within the tag.
+
+The \"no tag\" (shown as \"*\") loops through all frames."
+item_count = 1
+selected = 0
+popup/item_0/text = "*"
+popup/item_0/id = 0
+
+[node name="TagDirection" type="TextureRect" parent="TagItems"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_4udef")
+
+[node name="PaddingRight" type="Control" parent="TagItems"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PaddingLeft" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+
+[node name="FrameDisplay" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="FrameDisplayItem" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
+layout_mode = 2
+
+[node name="FrameDisplayItem2" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
+custom_minimum_size = Vector2(2.08165e-12, 12)
+layout_mode = 2
+hovering = true
+
+[node name="FrameDisplayItem3" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
+custom_minimum_size = Vector2(2.08165e-12, 12)
+layout_mode = 2
+hovering = true
+
+[node name="FrameSlider" type="HSlider" parent="MainContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ReversePlayBtn" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+tooltip_text = "Starts cycling through the frames in the reverse direction.
+
+NOTE: There is a minimum frame length of one engine frame,
+which at best is 60 frames per second. Frames shorter than
+1/60th of a second will play slower than expected, and frames
+will have a duration of engine frames rounded up (i.e. a frame
+duration of 36ms will take three engine frames or about 50ms)."
+toggle_mode = true
+icon = ExtResource("3_ixokn")
+
+[node name="PlayBtn" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+tooltip_text = "Starts cycling through the frames in the normal direction.
+
+NOTE: There is a minimum frame length of one engine frame,
+which at best is 60 frames per second. Frames shorter than
+1/60th of a second will play slower than expected, and frames
+will have a duration of engine frames rounded up (i.e. a frame
+duration of 36ms will take three engine frames or about 50ms)."
+toggle_mode = true
+icon = ExtResource("4_ytils")
+
+[node name="PaddingRight" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(32, 2.08165e-12)
+layout_mode = 2
+
+[connection signal="external_frame_update" from="." to="." method="_on_external_frame_update"]
+[connection signal="new_file_imported" from="." to="." method="_on_new_file_imported"]
+[connection signal="item_selected" from="TagItems/TagPicker" to="." method="_on_tag_picker_item_selected"]
+[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem" to="." method="_on_frame_display_item_new_frame"]
+[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem2" to="." method="_on_frame_display_item_new_frame"]
+[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem3" to="." method="_on_frame_display_item_new_frame"]
+[connection signal="value_changed" from="MainContainer/FrameSlider" to="." method="_on_frame_slider_value_changed"]
+[connection signal="toggled" from="MainContainer/ReversePlayBtn" to="." method="_on_reverse_play_btn_toggled"]
+[connection signal="toggled" from="MainContainer/PlayBtn" to="." method="_on_play_btn_toggled"]
