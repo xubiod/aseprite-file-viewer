@@ -58,7 +58,6 @@ script = ExtResource("4_i6eoe")
 title = "Open a File"
 initial_position = 2
 size = Vector2i(800, 480)
-always_on_top = true
 min_size = Vector2i(200, 140)
 ok_button_text = "Open"
 file_mode = 0
