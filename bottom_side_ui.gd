@@ -26,6 +26,7 @@ const TAG_TOOLTIP	: String = "{name} [{start}, {end}]"
 @onready var reverse_btn		: Button = $MainContainer/ReversePlayBtn
 var processing_animation_press	: bool = false
 
+@onready var FRAME_DISPLAY : HBoxContainer = $MainContainer/FrameDisplay
 @onready var FRAME_DISPLAY_ITEM : PackedScene = load("res://frame_display_item.tscn")
 
 var times			: float = 0
@@ -38,9 +39,12 @@ func _init() -> void: visible = false
 
 func _process(delta: float) -> void:
 	if play_btn.button_pressed || reverse_btn.button_pressed:
+		var chd : FrameDisplayItem = (FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem)
 		times += delta * 1000
+		chd.value = times
 		if times > Importer.all_frames[Importer.view_frame].DurationMS:
 			times = 0
+			chd.value = 0
 			if (frameslider.value == frame_range.y || frameslider.value == frameslider.max_value) && play_direction == 1:
 				if ping_pong:
 					play_direction *= -1
@@ -100,6 +104,8 @@ func _on_new_file_imported() -> void:
 		child.queue_free()
 
 	for frame_idx in len(Importer.all_frames):
+		if (Importer.all_frames[frame_idx] as AsepriteFrame).DurationMS == 0:
+			continue
 		var item = FRAME_DISPLAY_ITEM.instantiate() as FrameDisplayItem
 		item.setup(frame_idx)
 		item.new_frame.connect(_on_frame_display_item_new_frame)
@@ -138,4 +144,4 @@ func _on_tag_picker_item_selected(index: int) -> void:
 func get_true_height() -> float:
 	if !visible:
 		return 0.
-	return floorf(size.y / 36.) * 36.
+	return 72 if $TagItems.visible else 36

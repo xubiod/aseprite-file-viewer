@@ -11,6 +11,10 @@ const layer_item	: PackedScene = preload("res://layer_item.tscn")
 var border_image			: Image
 var border_image_texture	: ImageTexture
 
+func _enter_tree() -> void:
+	if !OS.is_debug_build():
+		current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+
 func _on_file_selected(path : String) -> void:
 	if !(path.ends_with(".ase") || path.ends_with(".aseprite")):
 		$"../WrongImport".show()

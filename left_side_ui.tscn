@@ -98,6 +98,7 @@ script = ExtResource("8_1sh7m")
 
 [node name="Padding" type="Control" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Frame" type="HBoxContainer" parent="."]
 visible = false

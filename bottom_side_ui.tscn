@@ -15,6 +15,7 @@ offset_top = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 10
+mouse_filter = 2
 alignment = 2
 script = ExtResource("1_yohu5")
 
@@ -61,19 +62,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="FrameDisplayItem" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
-layout_mode = 2
-
-[node name="FrameDisplayItem2" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
-custom_minimum_size = Vector2(2.08165e-12, 12)
-layout_mode = 2
-hovering = true
-
-[node name="FrameDisplayItem3" parent="MainContainer/FrameDisplay" instance_placeholder="res://frame_display_item.tscn"]
-custom_minimum_size = Vector2(2.08165e-12, 12)
-layout_mode = 2
-hovering = true
-
 [node name="FrameSlider" type="HSlider" parent="MainContainer"]
 visible = false
 layout_mode = 2
@@ -113,9 +101,6 @@ layout_mode = 2
 [connection signal="external_frame_update" from="." to="." method="_on_external_frame_update"]
 [connection signal="new_file_imported" from="." to="." method="_on_new_file_imported"]
 [connection signal="item_selected" from="TagItems/TagPicker" to="." method="_on_tag_picker_item_selected"]
-[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem" to="." method="_on_frame_display_item_new_frame"]
-[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem2" to="." method="_on_frame_display_item_new_frame"]
-[connection signal="new_frame" from="MainContainer/FrameDisplay/FrameDisplayItem3" to="." method="_on_frame_display_item_new_frame"]
 [connection signal="value_changed" from="MainContainer/FrameSlider" to="." method="_on_frame_slider_value_changed"]
 [connection signal="toggled" from="MainContainer/ReversePlayBtn" to="." method="_on_reverse_play_btn_toggled"]
 [connection signal="toggled" from="MainContainer/PlayBtn" to="." method="_on_play_btn_toggled"]

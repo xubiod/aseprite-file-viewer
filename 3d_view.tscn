@@ -98,10 +98,11 @@ size_flags_horizontal = 4
 text = "OK
 "
 
-[node name="BottomSideUI" parent="." instance=ExtResource("8_ikrnd")]
-unique_name_in_owner = true
-
 [node name="LeftSideUI" parent="." instance=ExtResource("7_qrcrx")]
+unique_name_in_owner = true
+offset_right = 352.0
+
+[node name="BottomSideUI" parent="." instance=ExtResource("8_ikrnd")]
 unique_name_in_owner = true
 
 [node name="RightSideUI" parent="." instance=ExtResource("10_g00hx")]
@@ -109,8 +110,8 @@ unique_name_in_owner = true
 
 [connection signal="file_selected" from="Windows/ImportDialog" to="Windows/ImportDialog" method="_on_file_selected"]
 [connection signal="pressed" from="Windows/WrongImport/VBoxContainer/WrongImportClose" to="Windows/WrongImport" method="_on_wrong_import_close_pressed"]
-[connection signal="frame_changed" from="BottomSideUI" to="MainCamera/ImagesHolder" method="_on_bottom_side_ui_frame_changed"]
 [connection signal="frame_changed" from="LeftSideUI" to="MainCamera/ImagesHolder" method="_on_left_side_ui_frame_changed"]
 [connection signal="import_button_pressed" from="LeftSideUI" to="Windows/ImportDialog" method="_on_left_side_ui_import_button_pressed"]
 [connection signal="zoom_changed" from="LeftSideUI" to="MainCamera" method="_on_left_side_ui_zoom_changed"]
 [connection signal="zoom_changed" from="LeftSideUI" to="MainCamera/Background" method="_on_left_side_ui_zoom_changed"]
+[connection signal="frame_changed" from="BottomSideUI" to="MainCamera/ImagesHolder" method="_on_bottom_side_ui_frame_changed"]
