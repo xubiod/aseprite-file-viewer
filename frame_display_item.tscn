@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://FrameDisplayItem.gd" id="1_ss1i3"]
 
 [node name="FrameDisplayItem" type="ProgressBar"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(2.08165e-12, 16)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
