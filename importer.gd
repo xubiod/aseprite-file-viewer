@@ -64,21 +64,15 @@ func import(fname: String) -> Vector2i:
 	_header_ignore = raw.get_buffer(84)
 
 	var current_frame = 0
-	var usable = true
 
 	while !raw.eof_reached():
-		usable = true
-		#[current_frame] = []
+		all_frames.append(AsepriteFrame.new())
 
 		# Frames
 		var _frames_length = raw.get_32()
 		var frames_magic = raw.get_16()
 		if frames_magic != 0xF1FA:
-			usable = false
 			push_error("wrong frames magic number (byte pos: %s)" % raw.get_position())
-
-		if usable:
-			all_frames.append(AsepriteFrame.new())
 
 		var frames_chunk_count = raw.get_16()
 		all_frames[len(all_frames)-1].DurationMS = raw.get_16()
