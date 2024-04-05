@@ -76,6 +76,7 @@ func _on_play_btn_toggled(button_pressed: bool) -> void:
 	play_btn.icon = ANIMATION_PLAY if !button_pressed else ANIMATION_PAUSE
 	play_direction = 1
 	times = 0
+	(FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem).value = 0
 
 	processing_animation_press = false
 

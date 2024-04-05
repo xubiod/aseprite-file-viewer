@@ -17,6 +17,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("1_q7xtp")
+max_value = 1.0
+step = 1.0
 show_percentage = false
 script = ExtResource("1_ss1i3")
 
