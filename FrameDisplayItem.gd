@@ -38,6 +38,9 @@ func _process(_delta: float) -> void:
 	custom_minimum_size.y = lerpf(custom_minimum_size.y, ACTIVE_MIN_H if (Importer.view_frame == frame_based || hovering) else INACTIVE_MIN_H, 0.3)
 	modulate.a = lerpf(modulate.a, target_alpha, 0.3)
 
+	if Importer.view_frame != frame_based:
+		value = 0
+
 func _on_mouse_entered() -> void: hovering = true
 func _on_mouse_exited()  -> void: hovering = false
 

@@ -63,7 +63,10 @@ func _on_frame_slider_value_changed(value: float) -> void:
 	var _frm = Importer.all_frames[floori(value)]
 	frameslider.tooltip_text = FRAME_TOOLTIP.format({"num": floori(value), "duration": _frm.DurationMS})
 
-func _on_external_frame_update(new_value: float) -> void: frameslider.value = new_value
+func _on_external_frame_update(new_value: float) -> void:
+	if FRAME_DISPLAY.get_child(frameslider.value) != null:
+		(FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem).value = 0
+	frameslider.value = new_value
 
 func _on_play_btn_toggled(button_pressed: bool) -> void:
 	if processing_animation_press:
