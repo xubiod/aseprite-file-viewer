@@ -18,6 +18,10 @@ run/main_scene="res://3d_view.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://tex/aseprite-viewer.svg"
 
+[audio]
+
+driver/driver="Dummy"
+
 [autoload]
 
 Importer="*res://importer.gd"
