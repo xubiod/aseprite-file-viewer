@@ -84,7 +84,8 @@ enum FlagItems {
 	IS_REFERENCE = 64,
 }
 
-var Flags			: int
+@export_flags("Visible","Editable","Lock Movement","Background","Prefer Linked Cells", "Group should be Collapsed", "Is reference") var Flags : int
+
 var Type			: LayerType
 var ChildLevel		: int
 var DefaultWidth	: int

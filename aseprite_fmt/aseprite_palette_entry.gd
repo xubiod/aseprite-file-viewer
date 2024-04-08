@@ -1,5 +1,6 @@
 class_name AsepritePaletteEntry extends RefCounted
 
-var Flags	: int
+@export_flags("Has name") var Flags	: int
+
 var Colour	: Color
 var Name	: String
