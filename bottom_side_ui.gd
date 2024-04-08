@@ -39,7 +39,7 @@ func _init() -> void: visible = false
 
 func _process(delta: float) -> void:
 	if play_btn.button_pressed || reverse_btn.button_pressed:
-		var chd : FrameDisplayItem = (FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem)
+		var chd : FrameDisplayItem = (FRAME_DISPLAY.get_child(frameslider.value as int) as FrameDisplayItem)
 		times += delta * 1000
 		chd.value = times
 		if times > Importer.all_frames[Importer.view_frame].DurationMS:
@@ -64,8 +64,8 @@ func _on_frame_slider_value_changed(value: float) -> void:
 	frameslider.tooltip_text = FRAME_TOOLTIP.format({"num": floori(value), "duration": _frm.DurationMS})
 
 func _on_external_frame_update(new_value: float) -> void:
-	if FRAME_DISPLAY.get_child(frameslider.value) != null:
-		(FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem).value = 0
+	if FRAME_DISPLAY.get_child(frameslider.value as int) != null:
+		(FRAME_DISPLAY.get_child(frameslider.value as int) as FrameDisplayItem).value = 0
 	frameslider.value = new_value
 
 func _on_play_btn_toggled(button_pressed: bool) -> void:
@@ -79,7 +79,7 @@ func _on_play_btn_toggled(button_pressed: bool) -> void:
 	play_btn.icon = ANIMATION_PLAY if !button_pressed else ANIMATION_PAUSE
 	play_direction = 1
 	times = 0
-	(FRAME_DISPLAY.get_child(frameslider.value) as FrameDisplayItem).value = 0
+	(FRAME_DISPLAY.get_child(frameslider.value as int) as FrameDisplayItem).value = 0
 
 	processing_animation_press = false
 
