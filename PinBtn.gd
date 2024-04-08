@@ -14,8 +14,8 @@ func _normal_to_all() -> void:
 func _init() -> void:
 	_normal_to_all()
 
-func _on_toggled(button_pressed: bool) -> void:
-	texture_normal = PIN_IN if button_pressed else PIN_OUT
+func _on_toggled(button_pressed_new_state: bool) -> void:
+	texture_normal = PIN_IN if button_pressed_new_state else PIN_OUT
 	_normal_to_all()
 
-	window.always_on_top = button_pressed
+	window.always_on_top = button_pressed_new_state
