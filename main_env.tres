@@ -1,0 +1,10 @@
+[gd_resource type="Environment" format=3 uid="uid://r1v21llj36q5"]
+
+[resource]
+background_mode = 1
+background_color = Color(0, 0, 0.0823529, 1)
+reflected_light_source = 1
+glow_intensity = 8.0
+glow_strength = 1.2
+glow_blend_mode = 0
+adjustment_brightness = 0.8

@@ -7,17 +7,10 @@
 [ext_resource type="Script" path="res://WrongImport.gd" id="3_s31my"]
 [ext_resource type="Material" uid="uid://d0ajbbcnnnq66" path="res://materials/bkgd_material.tres" id="3_xp15i"]
 [ext_resource type="Script" path="res://Background.gd" id="4_i6eoe"]
+[ext_resource type="Environment" uid="uid://r1v21llj36q5" path="res://main_env.tres" id="6_5tq1i"]
 [ext_resource type="PackedScene" uid="uid://vx8sxutdohm8" path="res://left_side_ui.tscn" id="7_qrcrx"]
 [ext_resource type="PackedScene" uid="uid://bjpq1pcl8pcyc" path="res://bottom_side_ui.tscn" id="8_ikrnd"]
 [ext_resource type="PackedScene" uid="uid://hun6i2uj5ha2" path="res://right_side_ui.tscn" id="10_g00hx"]
-
-[sub_resource type="Environment" id="Environment_p0lxc"]
-background_mode = 1
-background_color = Color(0, 0, 0.0823529, 1)
-glow_intensity = 8.0
-glow_strength = 1.2
-glow_blend_mode = 0
-adjustment_brightness = 0.8
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5wq8"]
 width = 3
@@ -27,9 +20,6 @@ normalize = false
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vq1ah")
-
-[node name="FunStuff" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_p0lxc")
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.97574e-16, -3.04919e-23, 0, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
@@ -51,6 +41,9 @@ cast_shadow = 0
 pixel_size = 1.0
 texture = SubResource("NoiseTexture2D_u5wq8")
 script = ExtResource("4_i6eoe")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainCamera"]
+environment = ExtResource("6_5tq1i")
 
 [node name="Windows" type="Node" parent="."]
 
