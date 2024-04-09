@@ -64,7 +64,7 @@ func _on_frame_slider_value_changed(value: float) -> void:
 	frameslider.tooltip_text = FRAME_TOOLTIP.format({"num": floori(value), "duration": _frm.DurationMS})
 
 func _on_external_frame_update(new_value: float) -> void:
-	if FRAME_DISPLAY.get_child(frameslider.value as int) != null:
+	if (frameslider.value as int) > FRAME_DISPLAY.get_child_count():
 		(FRAME_DISPLAY.get_child(frameslider.value as int) as FrameDisplayItem).value = 0
 	frameslider.value = new_value
 
