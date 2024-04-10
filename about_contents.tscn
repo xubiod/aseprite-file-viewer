@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvd7kfgobaphp"]
+[gd_scene load_steps=8 format=3 uid="uid://bvd7kfgobaphp"]
 
 [ext_resource type="Texture2D" uid="uid://bndrtm4owbc2w" path="res://tex/about_bkgd.png" id="1_jne6g"]
 [ext_resource type="Shader" uid="uid://2ajkwptm4ixj" path="res://shaders/about_bkgd.tres" id="1_jsnpb"]
 [ext_resource type="Texture2D" uid="uid://y1nimm4lorh5" path="res://tex/about_decal.png" id="3_7yanj"]
+[ext_resource type="Script" path="res://pride_effect.gd" id="3_oi5nm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7bpk"]
 shader = ExtResource("1_jsnpb")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_0mevg"]
+script = ExtResource("3_oi5nm")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mpeqc"]
 blend_mode = 1
@@ -78,7 +82,10 @@ Affinity Designer 2 - UI Iconography
 Aseprite - Verification
 [/center]
 
+Aseprite is owned and developed by [url=https://igara.com/]Igara Studio S.A.[/url] and are not affiliated with this project. No elements of the source code of Aseprite itself are used in this project, and it was not used as reference for any element other than the documentation within the source code.
+
 [/outline_color]"
+custom_effects = [SubResource("RichTextEffect_0mevg")]
 
 [node name="Decal" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.654902)
