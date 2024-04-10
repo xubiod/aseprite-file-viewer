@@ -82,8 +82,7 @@ Affinity Designer 2 - UI Iconography
 Aseprite - Verification
 [/center]
 
-Aseprite is owned and developed by [url=https://igara.com/]Igara Studio S.A.[/url] and are not affiliated with this project. No elements of the source code of Aseprite itself are used in this project, and it was not used as reference for any element other than the documentation within the source code.
-
+Aseprite is owned by [url=https://igara.com/]Igara Studio S.A.[/url], and are not affiliated with this project. No elements of the source code of Aseprite itself are used in this project, and it was not used as reference for any element other than the documentation within the source code.
 [/outline_color]"
 custom_effects = [SubResource("RichTextEffect_0mevg")]
 
