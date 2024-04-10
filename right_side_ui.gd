@@ -1,0 +1,3 @@
+class_name RightSideUI extends VBoxContainer
+
+signal on_about_pressed

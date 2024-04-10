@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p2lfyjdnp7qi"]
+[gd_scene load_steps=14 format=3 uid="uid://p2lfyjdnp7qi"]
 
 [ext_resource type="Script" path="res://MainCamera.gd" id="1_6yxtq"]
 [ext_resource type="Script" path="res://main.gd" id="1_vq1ah"]
@@ -10,6 +10,7 @@
 [ext_resource type="Environment" uid="uid://r1v21llj36q5" path="res://main_env.tres" id="6_5tq1i"]
 [ext_resource type="PackedScene" uid="uid://vx8sxutdohm8" path="res://left_side_ui.tscn" id="7_qrcrx"]
 [ext_resource type="PackedScene" uid="uid://bjpq1pcl8pcyc" path="res://bottom_side_ui.tscn" id="8_ikrnd"]
+[ext_resource type="PackedScene" uid="uid://ctmfb6ifua5we" path="res://about_window.tscn" id="9_of2qq"]
 [ext_resource type="PackedScene" uid="uid://hun6i2uj5ha2" path="res://right_side_ui.tscn" id="10_g00hx"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5wq8"]
@@ -90,6 +91,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "OK
 "
+
+[node name="AboutWindow" parent="Windows" instance=ExtResource("9_of2qq")]
+visible = false
 
 [node name="LeftSideUI" parent="." instance=ExtResource("7_qrcrx")]
 unique_name_in_owner = true

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://hun6i2uj5ha2"]
+[gd_scene load_steps=6 format=3 uid="uid://hun6i2uj5ha2"]
 
 [ext_resource type="Texture2D" uid="uid://cecji8rip3xj0" path="res://tex/ui/pin-out.svg" id="1_0nsvw"]
+[ext_resource type="Script" path="res://right_side_ui.gd" id="1_to01y"]
 [ext_resource type="Script" path="res://PinBtn.gd" id="2_rh6jo"]
+[ext_resource type="Texture2D" uid="uid://cpw5l6gd0460n" path="res://tex/ui/about.svg" id="3_ce7v4"]
+[ext_resource type="Script" path="res://AboutBtn.gd" id="5_fmr80"]
 
 [node name="RightSideUI" type="VBoxContainer"]
 anchors_preset = 11
@@ -10,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("1_to01y")
 
 [node name="PinBtn" type="TextureButton" parent="."]
 layout_mode = 2
@@ -19,4 +23,15 @@ toggle_mode = true
 texture_normal = ExtResource("1_0nsvw")
 script = ExtResource("2_rh6jo")
 
+[node name="AboutBtn" type="TextureButton" parent="."]
+layout_mode = 2
+tooltip_text = "Shows the about window."
+texture_normal = ExtResource("3_ce7v4")
+texture_pressed = ExtResource("3_ce7v4")
+texture_hover = ExtResource("3_ce7v4")
+texture_disabled = ExtResource("3_ce7v4")
+texture_focused = ExtResource("3_ce7v4")
+script = ExtResource("5_fmr80")
+
 [connection signal="toggled" from="PinBtn" to="PinBtn" method="_on_toggled"]
+[connection signal="pressed" from="AboutBtn" to="AboutBtn" method="_on_pressed"]

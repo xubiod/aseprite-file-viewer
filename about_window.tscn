@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctmfb6ifua5we"]
+
+[ext_resource type="Script" path="res://about_window.gd" id="1_bte5b"]
+
+[node name="AboutWindow" type="Window"]
+title = "About"
+initial_position = 2
+size = Vector2i(960, 480)
+script = ExtResource("1_bte5b")
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(944, 464)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MainText" type="RichTextLabel" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[outline_color=black][b]Aseprite File Viewer[/b]
+Created by Xubiod, 2024
+
+Built with [url=https://godotengine.org/][color=LIGHT_STEEL_BLUE]Godot Engine[/color][/url] 4.1.3.stable
+Open source on [url=http://github.com/xubiod/aseprite-file-viewer][color=LIGHT_STEEL_BLUE]Github[/color][/url]
+
+[tornado radius=2.0 freq=4.0]Powered completely with [rainbow]GDScript![/rainbow][/tornado]
+
+Uses the official [url=https://github.com/aseprite/aseprite/blob/main/docs/ase-file-specs.md][color=LIGHT_STEEL_BLUE]file specifications for Aseprite[/color][/url]
+Officially tested with files made with Aseprite [b]1.3.5+[/b]
+
+[/outline_color]"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="meta_clicked" from="Container/MainText" to="." method="_on_main_text_meta_clicked"]
+[connection signal="meta_hover_ended" from="Container/MainText" to="." method="_on_main_text_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Container/MainText" to="." method="_on_main_text_meta_hover_started"]
