@@ -14,3 +14,6 @@ script = ExtResource("1_bte5b")
 [node name="AboutContents" parent="." instance=ExtResource("2_m5vju")]
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="meta_click" from="AboutContents" to="." method="_on_main_text_meta_clicked"]
+[connection signal="meta_hover_start" from="AboutContents" to="." method="_on_main_text_meta_hover_started"]
+[connection signal="meta_hover_stop" from="AboutContents" to="." method="_on_main_text_meta_hover_ended"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvd7kfgobaphp"]
+[gd_scene load_steps=10 format=3 uid="uid://bvd7kfgobaphp"]
 
 [ext_resource type="Texture2D" uid="uid://bndrtm4owbc2w" path="res://tex/about_bkgd.png" id="1_jne6g"]
 [ext_resource type="Shader" uid="uid://2ajkwptm4ixj" path="res://shaders/about_bkgd.tres" id="1_jsnpb"]
+[ext_resource type="Script" path="res://about_contents.gd" id="1_yn6di"]
 [ext_resource type="Texture2D" uid="uid://y1nimm4lorh5" path="res://tex/about_decal.png" id="3_7yanj"]
 [ext_resource type="Script" path="res://pride_effect.gd" id="3_oi5nm"]
+[ext_resource type="Script" path="res://MainText.gd" id="4_nu12f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7bpk"]
 shader = ExtResource("1_jsnpb")
@@ -16,13 +18,14 @@ blend_mode = 1
 light_mode = 1
 
 [node name="AboutContents" type="Node2D"]
+script = ExtResource("1_yn6di")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_p7bpk")
-position = Vector2(699, 254)
-scale = Vector2(13.9179, 11.022)
+position = Vector2(657.222, 276.843)
+scale = Vector2(13.0245, 10.3145)
 skew = 0.523599
 texture = ExtResource("1_jne6g")
 
@@ -82,9 +85,13 @@ Affinity Designer 2 - UI Iconography
 Aseprite - Verification
 [/center]
 
-Aseprite is owned by [url=https://igara.com/]Igara Studio S.A.[/url], and are not affiliated with this project. No elements of the source code of Aseprite itself are used in this project, and it was not used as reference for any element other than the documentation within the source code.
+Aseprite is owned by [url=https://igara.com/][color=LIGHT_STEEL_BLUE]Igara Studio S.A.[/color][/url], and are not affiliated with this project. No elements of the source code of Aseprite itself are used in this project, and it was not used as reference for any element other than the documentation within the source code.
 [/outline_color]"
 custom_effects = [SubResource("RichTextEffect_0mevg")]
+script = ExtResource("4_nu12f")
+
+[node name="ScrollReset" type="Timer" parent="Container/MainText"]
+one_shot = true
 
 [node name="Decal" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.654902)
@@ -95,3 +102,8 @@ position = Vector2(726, 290)
 scale = Vector2(3.31818, 3.31818)
 skew = 0.523599
 texture = ExtResource("3_7yanj")
+
+[connection signal="meta_clicked" from="Container/MainText" to="Container/MainText" method="_on_meta_clicked"]
+[connection signal="meta_hover_ended" from="Container/MainText" to="Container/MainText" method="_on_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Container/MainText" to="Container/MainText" method="_on_meta_hover_started"]
+[connection signal="timeout" from="Container/MainText/ScrollReset" to="Container/MainText" method="_on_scroll_reset_timeout"]
