@@ -103,7 +103,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center][outline_color=black][b]Aseprite File Viewer[/b]
-Created by Xubiod, 2024
+Created by [pride]Xubiod[/pride], 2024
 
 Built with [url=https://godotengine.org/][color=LIGHT_STEEL_BLUE]Godot Engine[/color][/url] 4.1.3.stable
 Open source on [url=http://github.com/xubiod/aseprite-file-viewer][color=LIGHT_STEEL_BLUE]Github[/color][/url]
