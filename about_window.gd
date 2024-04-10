@@ -21,5 +21,5 @@ func _on_main_text_meta_hover_started(meta : Variant) -> void:
 	if url.begins_with("http"):
 		$AboutContents/Container/MainText.tooltip_text = "Opens in browser"
 
-func _on_main_text_meta_hover_ended(meta : Variant) -> void:
+func _on_main_text_meta_hover_ended(_meta : Variant) -> void:
 	$AboutContents/Container/MainText.tooltip_text = ""
