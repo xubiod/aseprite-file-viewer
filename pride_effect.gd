@@ -5,7 +5,7 @@ class_name RichTextPride extends RichTextEffect
 
 var bbcode = "pride"
 
-const colour : Array[Color] = [Color.LIGHT_BLUE, Color.LIGHT_PINK, Color.WHITE, Color.LIGHT_PINK]
+const colour : PackedColorArray = [Color.LIGHT_BLUE, Color.LIGHT_PINK, Color.WHITE, Color.LIGHT_PINK]
 const colour_count : float = float(len(colour))
 
 func _process_custom_fx(char_fx: CharFXTransform) -> bool:
