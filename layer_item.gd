@@ -62,8 +62,14 @@ func update_warning() -> void:
 	warn.tooltip_text = ""
 
 	if !blend_mode_supported:
-		warn.tooltip_text += "This blend mode (%s) is currently unsupported\nand will be treated as Normal" % AsepriteLayer.BlendModeToString[_me.Blending]
-		warn.visible |= true
+		warn.tooltip_text += "This blend mode (%s) is currently unsupported\nand will be treated as Normal\n\n" % AsepriteLayer.BlendModeToString[_me.Blending]
+		warn.visible = true
+
+	if _me.Flags & AsepriteLayer.FlagItems.IS_REFERENCE > 0:
+		warn.tooltip_text += "Reference layers are loaded in, but they won't\ndisplay as expected\n\n"
+		warn.visible = true
+
+	warn.tooltip_text.strip_edges()
 
 func _on_visible_pressed() -> void:
 	Importer.all_layers[rep_layer].Flags ^= AsepriteLayer.FlagItems.VISIBLE
