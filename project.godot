@@ -25,6 +25,7 @@ driver/driver="Dummy"
 [autoload]
 
 Importer="*res://importer.gd"
+GlobalNotificationHandler="*res://GlobalNotificationHandler.gd"
 
 [debug]
 
