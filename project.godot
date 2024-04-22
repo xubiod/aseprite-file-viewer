@@ -91,6 +91,12 @@ reset_position={
 3d_render/layer_1="Main"
 3d_render/layer_2="Uhm"
 
+[physics]
+
+common/physics_ticks_per_second=1
+common/max_physics_steps_per_frame=1
+common/physics_jitter_fix=2.08165e-12
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
