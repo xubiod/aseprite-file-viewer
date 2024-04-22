@@ -20,6 +20,10 @@ func _on_file_selected(path : String) -> void:
 		$"../WrongImport".show()
 		return
 
+	if Importer.import(path):
+		$"../WrongImport".show()
+		return
+
 	# kill all the children
 	for child in parent.get_children():
 		child.queue_free()
@@ -27,7 +31,6 @@ func _on_file_selected(path : String) -> void:
 	for item in %LeftSideUI.layerview.get_children():
 		item.queue_free()
 
-	Importer.import(path)
 #	%LeftSideUI.external_frame_update.emit(0)
 #	%LeftSideUI.frameslider.max_value = len(Importer.all_frames) - 2
 #	%LeftSideUI.frameslider.tick_count = (%LeftSideUI.frameslider.max_value / 4) + 2

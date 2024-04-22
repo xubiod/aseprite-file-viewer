@@ -17,7 +17,7 @@ var layer_separation	: float = STARTING_SEPARATION
 var spreadout			: bool = false
 var truespreadout		: bool = false
 
-func import(fname: String) -> Vector2i:
+func import(fname: String) -> bool:
 	all_layers.clear()
 	all_tags.clear()
 	all_frames.clear()
@@ -61,6 +61,7 @@ func import(fname: String) -> Vector2i:
 
 		push_error("unsupported rn nocap")
 		raw.seek_end(0)
+		return false
 
 	_header_ignore = raw.get_buffer(84)
 
@@ -77,6 +78,7 @@ func import(fname: String) -> Vector2i:
 		var frames_magic = raw.get_16()
 		if frames_magic != 0xF1FA:
 			push_error("wrong frames magic number (byte pos: %s)" % raw.get_position())
+			return false
 
 		var frames_chunk_count = raw.get_16()
 		all_frames[len(all_frames)-1].DurationMS = raw.get_16()
@@ -198,4 +200,4 @@ func import(fname: String) -> Vector2i:
 	raw.close()
 
 	image_size = Vector2i(header_width, header_height)
-	return image_size
+	return true
