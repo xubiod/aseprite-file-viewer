@@ -37,7 +37,7 @@ func import(fname: String) -> Vector2i:
 	if header_magic != 0xA5E0:
 		push_error("wrong header magic number (byte pos: %s)" % raw.get_position())
 
-	var _header_frames = raw.get_16()
+	var header_frames = raw.get_16()
 	var header_width = raw.get_16()
 	var header_height = raw.get_16()
 	var header_colour_depth = raw.get_16()
@@ -66,6 +66,9 @@ func import(fname: String) -> Vector2i:
 	var current_frame = 0
 
 	while !raw.eof_reached():
+		if current_frame >= header_frames:
+			break
+
 		all_frames.append(AsepriteFrame.new())
 
 		# Frames
