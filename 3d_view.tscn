@@ -80,9 +80,9 @@ alignment = 1
 [node name="WrongImportText" type="Label" parent="Windows/WrongImport/VBoxContainer"]
 custom_minimum_size = Vector2(256, 2.08165e-12)
 layout_mode = 2
-text = "The given file(s) did not have a valid extention.
+text = "Indexed colour mode files are currently unsupported.
 
-Supported: \".ase\", \".aseprite\""
+"
 horizontal_alignment = 1
 
 [node name="WrongImportClose" type="Button" parent="Windows/WrongImport/VBoxContainer"]
