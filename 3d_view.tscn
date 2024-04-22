@@ -62,7 +62,7 @@ script = ExtResource("2_3dwcv")
 [node name="WrongImport" type="Popup" parent="Windows"]
 title = "Invalid Path"
 initial_position = 2
-size = Vector2i(448, 128)
+size = Vector2i(489, 128)
 borderless = false
 always_on_top = true
 script = ExtResource("3_s31my")
@@ -77,12 +77,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="WrongImportText" type="Label" parent="Windows/WrongImport/VBoxContainer"]
+[node name="IndexedColourModeLabel" type="Label" parent="Windows/WrongImport/VBoxContainer"]
 custom_minimum_size = Vector2(256, 2.08165e-12)
 layout_mode = 2
 text = "Indexed colour mode files are currently unsupported.
 
 "
+horizontal_alignment = 1
+
+[node name="FileTypeErrorLabel" type="Label" parent="Windows/WrongImport/VBoxContainer"]
+custom_minimum_size = Vector2(256, 2.08165e-12)
+layout_mode = 2
+text = "Only Aseprite project files (*.ase & *.aseprite) can be loaded in. "
 horizontal_alignment = 1
 
 [node name="WrongImportClose" type="Button" parent="Windows/WrongImport/VBoxContainer"]

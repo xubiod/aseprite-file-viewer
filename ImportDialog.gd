@@ -17,10 +17,14 @@ func _enter_tree() -> void:
 
 func _on_file_selected(path : String) -> void:
 	if !(path.ends_with(".ase") || path.ends_with(".aseprite")):
+		$"../WrongImport/VBoxContainer/IndexedColourModeLabel".visible = false
+		$"../WrongImport/VBoxContainer/FileTypeErrorLabel".visible = true
 		$"../WrongImport".show()
 		return
 
 	if !Importer.import(path):
+		$"../WrongImport/VBoxContainer/IndexedColourModeLabel".visible = true
+		$"../WrongImport/VBoxContainer/FileTypeErrorLabel".visible = false
 		$"../WrongImport".show()
 		return
 
