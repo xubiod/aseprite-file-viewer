@@ -60,6 +60,7 @@ func import(fname: String) -> Vector2i:
 		pixel_size = 1
 
 		push_error("unsupported rn nocap")
+		raw.seek_end(0)
 
 	_header_ignore = raw.get_buffer(84)
 
