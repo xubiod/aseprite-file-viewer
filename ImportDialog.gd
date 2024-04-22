@@ -20,7 +20,7 @@ func _on_file_selected(path : String) -> void:
 		$"../WrongImport".show()
 		return
 
-	if Importer.import(path):
+	if !Importer.import(path):
 		$"../WrongImport".show()
 		return
 
