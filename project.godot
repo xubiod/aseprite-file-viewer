@@ -16,6 +16,7 @@ config/description="A viewer for Aseprite files, showing the layers in a 2D view
 Made with Godot Engine 4.1.3.stable with no modifications, and 100% completely with GDScript."
 run/main_scene="res://3d_view.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
+run/low_processor_mode=true
 config/icon="res://tex/aseprite-viewer.svg"
 
 [audio]
