@@ -18,7 +18,7 @@ func _process_custom_fx(char_fx: CharFXTransform) -> bool:
 	var effective : float = (char_fx.elapsed_time / spd)
 
 	var progress0 : float = wrapf(((float(char_fx.relative_index) * stretch + offset) / float(char_fx.glyph_count)) + effective, 0, colour_count)
-	var progress1 : float = wrapf(((float(char_fx.relative_index + 1) * stretch + offset) / float(char_fx.glyph_count)) + effective, 0, colour_count)
+	# var progress1 : float = wrapf(((float(char_fx.relative_index + 1) * stretch + offset) / float(char_fx.glyph_count)) + effective, 0, colour_count)
 
 	char_fx.color = colour.get(pattern)[int(progress0)]
 
