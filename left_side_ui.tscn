@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://vx8sxutdohm8"]
+[gd_scene load_steps=11 format=3 uid="uid://vx8sxutdohm8"]
 
 [ext_resource type="Script" path="res://LeftSideUI.gd" id="1_rd8ut"]
 [ext_resource type="Texture2D" uid="uid://11wodm8igj3w" path="res://tex/ui/import.svg" id="2_duekr"]
+[ext_resource type="InputEventKey" uid="uid://d3n1qqp207wnq" path="res://input_events/cmd_ctrl_o.tres" id="2_hx42f"]
 [ext_resource type="Script" path="res://ZoomText.gd" id="3_5dxxd"]
 [ext_resource type="Script" path="res://FrameText.gd" id="4_ldcim"]
 [ext_resource type="Texture2D" uid="uid://8yruafyhere3" path="res://tex/ui/view-2d.svg" id="5_482k6"]
 [ext_resource type="Script" path="res://ViewStyle.gd" id="6_hcrui"]
 [ext_resource type="Script" path="res://ViewStyleText.gd" id="7_0ixe3"]
 [ext_resource type="Script" path="res://SpreadDistance.gd" id="8_1sh7m"]
+
+[sub_resource type="Shortcut" id="Shortcut_6rgvc"]
+events = [ExtResource("2_hx42f")]
 
 [node name="LeftSideUI" type="VBoxContainer"]
 anchors_preset = 9
@@ -26,6 +30,8 @@ layout_mode = 2
 [node name="ImportBtn" type="Button" parent="TopButtons"]
 custom_minimum_size = Vector2(96, 2.08165e-12)
 layout_mode = 2
+tooltip_text = "Opens a Godot file picker to import an Aseprite file."
+shortcut = SubResource("Shortcut_6rgvc")
 text = "Import"
 icon = ExtResource("2_duekr")
 
