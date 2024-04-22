@@ -89,8 +89,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(96, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "OK
-"
+text = "OK"
 
 [node name="AboutWindow" parent="Windows" instance=ExtResource("9_of2qq")]
 visible = false
