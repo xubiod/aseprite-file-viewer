@@ -7,6 +7,8 @@ const VISIBILITY_HIDDEN	: Texture2D = preload("res://tex/ui/visibility-hidden.sv
 
 const TOOLTIP_TEMPLATE : String = "{name}\n{visible}\nBlend mode: {blend}\nOpacity: {opac}% ({rawopac}){extra}"
 
+const HOVERED_ALPHA : float = 0.06125
+
 var rep_layer		: int
 var parent_index	: int
 
@@ -76,5 +78,5 @@ func _on_visible_pressed() -> void:
 	update_visible_icon()
 	i_updated.emit()
 
-func _on_mouse_entered()	-> void: color.a = 0.06125
+func _on_mouse_entered()	-> void: color.a = HOVERED_ALPHA
 func _on_mouse_exited()		-> void: color.a = 0.0

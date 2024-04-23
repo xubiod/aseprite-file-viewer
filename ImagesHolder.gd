@@ -3,7 +3,8 @@ extends Node3D
 const SEPERATION_WEIGHT				: float = 0.5
 const background_effect_reduction	: int = 2560
 
-@export var speed : float = 0.3
+@export var speed			: float = 0.3
+@export var spread_angle	: int = -45
 
 var inital_position		: Vector3
 var mom					: Vector2 = Vector2(0,0)
@@ -24,7 +25,7 @@ func _process(_delta : float) -> void:
 
 	if Importer.truespreadout:
 		separation_approach = Importer.STARTING_SEPARATION * Importer.seperation_distance
-		angle_approach = -45
+		angle_approach = spread_angle
 	else:
 		separation_approach = Importer.STARTING_SEPARATION
 		angle_approach = 0
