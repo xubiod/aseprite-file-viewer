@@ -20,6 +20,9 @@ const DIRECTION_ARR : Array[Texture2D] = [
 const FRAME_TOOLTIP	: String = "Frame {num}\n{duration}ms"
 const TAG_TOOLTIP	: String = "{name} [{start}, {end}]"
 
+@export var FULL_HEIGHT : int = 72
+@export var HALF_HEIGHT : int = 36
+
 @onready var frameslider : HSlider = $MainContainer/FrameSlider
 
 @onready var play_btn			: Button = $MainContainer/PlayBtn
@@ -148,4 +151,4 @@ func _on_tag_picker_item_selected(index: int) -> void:
 func get_true_height() -> float:
 	if !visible:
 		return 0.
-	return 72 if $TagItems.visible else 36
+	return FULL_HEIGHT if $TagItems.visible else HALF_HEIGHT
